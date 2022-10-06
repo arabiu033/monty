@@ -2,12 +2,12 @@
 
 /**
  * main - check the code
- *
+ * @ac: args count
+ * @av: args passed
  * Return: Always 0.
  */
 int main(int ac, char **av)
 {
-	/*FILE *fd;*/
 	size_t len = 0;
 	int read, lineCount = 0;
 	stack_t *head = NULL;
@@ -64,7 +64,7 @@ void filter(stack_t **stack, unsigned int l)
 
 /**
  * free_all - free all the memory in use
- * @stack: list
+ * @list: list
  * Return: void
  */
 void free_all(stack_t *list)
