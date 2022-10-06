@@ -25,7 +25,7 @@ void push(stack_t **stack, unsigned int line_number)
 	{
 		if (!isdigit(holder[i]))
 		{
-			fprintf(stderr, "L%d: unknown instruction %s\n", line_number, "push");
+			fprintf(stderr, "L%d: usage: push integer\n", line_number);
 			free(new);
 			free_all(*stack, NULL);
 			exit(EXIT_FAILURE);
