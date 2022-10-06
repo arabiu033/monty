@@ -29,7 +29,14 @@ int main(int ac, char **av)
 
 	free_all(head, fd);
 	while ((read = getline(&line, &len, fd)) != -1)
+	{
+		if (*line == '\n')
+		{
+			++lineCount;
+			continue;
+		}
 		filter(&head, ++lineCount);
+	}
 
 	fclose(fd);
 	if (line)
@@ -58,6 +65,9 @@ void filter(stack_t **stack, unsigned int l)
 			return;
 		}
 	}
+
+	if (*cmd == '\n')
+		return;
 	fprintf(stderr, "L%d: unknown instruction %s\n", l, cmd);
 	free_all(*stack, NULL);
 	exit(EXIT_FAILURE);
