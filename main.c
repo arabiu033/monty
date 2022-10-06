@@ -8,6 +8,7 @@
  */
 int main(int ac, char **av)
 {
+	FILE *fd;
 	size_t len = 0;
 	int read, lineCount = 0;
 	stack_t *head = NULL;
@@ -26,6 +27,7 @@ int main(int ac, char **av)
 		exit(EXIT_FAILURE);
 	}
 
+	free_all(head, fd);
 	while ((read = getline(&line, &len, fd)) != -1)
 		filter(&head, ++lineCount);
 
@@ -57,7 +59,7 @@ void filter(stack_t **stack, unsigned int l)
 		}
 	}
 	fprintf(stderr, "L%d: unknown instruction %s\n", l, cmd);
-	free_all(*stack);
+	free_all(*stack, NULL);
 	exit(EXIT_FAILURE);
 }
 
@@ -67,8 +69,15 @@ void filter(stack_t **stack, unsigned int l)
  * @list: list
  * Return: void
  */
-void free_all(stack_t *list)
+void free_all(stack_t *list, FILE *f)
 {
+	static FILE *fd;
+
+	if (f)
+	{
+		fd = f;
+		return;
+	}
 	fclose(fd);
 	free(line);
 	free_list(list);

@@ -16,7 +16,7 @@ void push(stack_t **stack, unsigned int line_number)
 	if (!new)
 	{
 		fprintf(stderr, "%s", "Error: malloc failed\n");
-		free_all(*stack);
+		free_all(*stack, NULL);
 		exit(EXIT_FAILURE);
 	}
 
@@ -27,7 +27,7 @@ void push(stack_t **stack, unsigned int line_number)
 		{
 			fprintf(stderr, "L%d: unknown instruction %s\n", line_number, "push");
 			free(new);
-			free_all(*stack);
+			free_all(*stack, NULL);
 			exit(EXIT_FAILURE);
 		}
 	}
