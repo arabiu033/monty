@@ -67,6 +67,7 @@ void filter(stack_t **stack, unsigned int l)
 /**
  * free_all - free all the memory in use
  * @list: list
+ * @f: file descrp
  * Return: void
  */
 void free_all(stack_t *list, FILE *f)
