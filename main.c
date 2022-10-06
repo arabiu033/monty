@@ -7,9 +7,9 @@
  */
 int main(int ac, char **av)
 {
-	FILE *fd;
+	/*FILE *fd;*/
 	size_t len = 0;
-	int read;
+	int read, lineCount = 0;
 	stack_t *head = NULL;
 
 	if (ac != 2)
@@ -26,27 +26,50 @@ int main(int ac, char **av)
 		exit(EXIT_FAILURE);
 	}
 
-	while ((read = getline(&line, &len, fd)) != -1 && ++lineCount)
-		filter(&head, &line, &lineCount);
+	while ((read = getline(&line, &len, fd)) != -1)
+		filter(&head, ++lineCount);
 
 	fclose(fd);
 	if (line)
 		free(line);
+	free_list(head);
 	exit(EXIT_SUCCESS);
 }
 
-
-void filter(stack_t **stack, char **line, unsigned int l)
+/**
+ * filter - filter the function to trigger
+ * @stack: the linked list
+ * @l: number line
+ * Return: void
+ */
+void filter(stack_t **stack, unsigned int l)
 {
 	instruction_t ins[] = { {"push", push}, {"pall", print}  };
-	char *cmd = strtok(*line, " ");
+	char *cmd = strtok(line, " ");
+	int i;
 
 	for (i = 0; i < 2; i++)
 	{
-		if (!strcmp(ins[i].opcode, cmd) && ins[i].f(line, l))
+		if (!strncmp(ins[i].opcode, cmd, 4))
+		{
+			ins[i].f(stack, l);
 			return;
+		}
 	}
 	fprintf(stderr, "L%d: unknown instruction %s\n", l, cmd);
-	free_list(*stack);
+	free_all(*stack);
 	exit(EXIT_FAILURE);
+}
+
+
+/**
+ * free_all - free all the memory in use
+ * @stack: list
+ * Return: void
+ */
+void free_all(stack_t *list)
+{
+	fclose(fd);
+	free(line);
+	free_list(list);
 }

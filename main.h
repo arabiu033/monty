@@ -5,8 +5,10 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
 
-extern char *line;
+char *line;
+FILE *fd;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -38,5 +40,10 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+void filter(stack_t **stack, unsigned int l);
+void push(stack_t **stack, unsigned int line_number);
+void print(stack_t **stack, unsigned int line_number);
+void free_list(stack_t *list);
+void free_all(stack_t *list);
 
 #endif
