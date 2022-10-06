@@ -57,7 +57,7 @@ void filter(stack_t **stack, unsigned int l)
 	char *cmd = strtok(line, " ");
 	int i;
 
-	for (i = 0; i < 3; i++)
+	for (i = 0; i < 2; i++)
 	{
 		if (!strncmp(ins[i].opcode, cmd, 4))
 		{

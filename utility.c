@@ -58,6 +58,25 @@ void print(stack_t **stack, __attribute__((unused)) unsigned int line_number)
 }
 
 /**
+ * pint - print the first value in stack
+ * @stack: the stack
+ * @line_number: the line number in the monty file
+ * Return: void
+ */
+void pint(stack_t **stack, unsigned int line_number)
+{
+	if (!*stack)
+	{
+		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
+		free_all(*stack, NULL);
+		exit(EXIT_FAILURE);
+	}
+
+	printf("%d\n", (*stack)->n);
+}
+
+
+/**
  * free_list - free linked list
  * @list: list to free
  * Return: nothing
