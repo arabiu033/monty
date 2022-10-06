@@ -75,6 +75,27 @@ void pint(stack_t **stack, unsigned int line_number)
 	printf("%d\n", (*stack)->n);
 }
 
+/**
+ * pop - pop the first value in stack
+ * @stack: the stack
+ * @line_number: the line number in the monty file
+ * Return: void
+ */
+void pop(stack_t **stack, unsigned int line_number)
+{
+	stack_t *holder;
+
+	if (!*stack)
+	{
+		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
+		free_all(*stack, NULL);
+		exit(EXIT_FAILURE);
+	}
+
+	holder = *stack;;
+	*stack = holder->next;
+	free(holder);
+}
 
 /**
  * free_list - free linked list

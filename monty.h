@@ -43,6 +43,7 @@ void filter(stack_t **stack, unsigned int l);
 void push(stack_t **stack, unsigned int line_number);
 void print(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
+void pop(stack_t **stack, unsigned int line_number);
 void free_list(stack_t *list);
 void free_all(stack_t *list, FILE *f);
 
