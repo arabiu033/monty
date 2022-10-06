@@ -21,7 +21,7 @@ void push(stack_t **stack, unsigned int line_number)
 	}
 
 	holder = strtok(NULL, " ");
-	for (i = 0; i < strlen(holder) - 1; i++)
+	for (i = 0; i < strlen(holder) - 1 || *holder == '\n'; i++)
 	{
 		if (!isdigit(holder[i]))
 		{
