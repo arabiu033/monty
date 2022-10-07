@@ -59,7 +59,7 @@ void filter(stack_t **stack, unsigned int l)
 	char *cmd = strtok(line, " ");
 	int i;
 
-	if (*cmd == '\n')
+	if (*cmd == '\n' || *cmd == '#')
 		return;
 	for (i = 0; i < 11; i++)
 	{
