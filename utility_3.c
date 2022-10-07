@@ -86,7 +86,7 @@ void pstr(stack_t **stack, __attribute__((unused)) unsigned int line_number)
 {
 	stack_t *holder = *stack;
 
-	while (holder && holder->n != 0)
+	while (holder && holder->n != 0 && holder->n > 0 && holder->n < 127)
 	{
 		printf("%c", holder->n);
 		holder = holder->next;
