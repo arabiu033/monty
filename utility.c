@@ -92,7 +92,7 @@ void pop(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	holder = *stack;;
+	holder = *stack;
 	*stack = holder->next;
 	free(holder);
 }
