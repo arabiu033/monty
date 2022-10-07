@@ -106,7 +106,7 @@ void rotl(stack_t **stack, __attribute__((unused)) unsigned int line_number)
 {
 	stack_t *holder = *stack, *dum;
 
-	if (!holder)
+	if (!holder || !holder->next)
 		return;
 
 	while (holder && holder->next)
