@@ -55,13 +55,13 @@ void filter(stack_t **stack, unsigned int l)
 {
 	instruction_t ins[] = { {"push", push}, {"pall", print}, {"pint", pint},
 				{"pop", pop}, {"add", add}, {"swap", swap}, {"nop", nop},
-				{"sub", sub}, {"div", _div} };
+				{"sub", sub}, {"div", _div}, {"mul", _mul} };
 	char *cmd = strtok(line, " ");
 	int i;
 
 	if (*cmd == '\n')
 		return;
-	for (i = 0; i < 9; i++)
+	for (i = 0; i < 10; i++)
 	{
 		if (!strncmp(ins[i].opcode, cmd, strlen(cmd) - 1))
 		{
