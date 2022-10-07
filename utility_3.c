@@ -23,7 +23,7 @@ void _mul(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * mod - mod the first value in stack to the second value
+ * _mod - mod the first value in stack to the second value
  * @stack: the stack
  * @line_number: the line number in the monty file
  * Return: void
@@ -74,4 +74,23 @@ void pchar(stack_t **stack, unsigned int line_number)
 	}
 
 	printf("%c\n", (*stack)->n);
+}
+
+/**
+ * pstr - push a new node into a stack
+ * @stack: working stack
+ * @line_number: the line number in the monty file
+ * return: a pointer
+ */
+void pstr(stack_t **stack, __attribute__((unused)) unsigned int line_number)
+{
+	stack_t *holder = *stack;
+
+	while (holder && holder->n != 0)
+	{
+		printf("%c", holder->n);
+		holder = holder->next;
+	}
+	printf("\n");
+
 }

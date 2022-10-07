@@ -81,7 +81,7 @@ void sub(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * div - div the first value in stack to the second value
+ * _div - div the first value in stack to the second value
  * @stack: the stack
  * @line_number: the line number in the monty file
  * Return: void
