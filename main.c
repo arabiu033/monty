@@ -61,7 +61,7 @@ void filter(stack_t **stack, unsigned int l)
 
 	if (*cmd == '\n')
 		return;
-	for (i = 0; i < 10; i++)
+	for (i = 0; i < 11; i++)
 	{
 		if (!strncmp(ins[i].opcode, cmd, strlen(cmd) - 1))
 		{
