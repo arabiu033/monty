@@ -58,6 +58,8 @@ void filter(stack_t **stack, unsigned int l)
 	char *cmd = strtok(line, " ");
 	int i;
 
+	if (*cmd == '\n')
+		return;
 	for (i = 0; i < 7; i++)
 	{
 		if (!strncmp(ins[i].opcode, cmd, strlen(cmd) - 1))
@@ -67,8 +69,6 @@ void filter(stack_t **stack, unsigned int l)
 		}
 	}
 
-	if (*cmd == '\n')
-		return;
 	fprintf(stderr, "L%d: unknown instruction %s\n", l, cmd);
 	free_all(*stack, NULL);
 	exit(EXIT_FAILURE);
