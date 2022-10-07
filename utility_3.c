@@ -94,3 +94,24 @@ void pstr(stack_t **stack, __attribute__((unused)) unsigned int line_number)
 	printf("\n");
 
 }
+
+
+/**
+ * rotl - push a new node into a stack
+ * @stack: working stack
+ * @line_number: the line number in the monty file
+ * return: a pointer
+ */
+void rotl(stack_t **stack, __attribute__((unused)) unsigned int line_number)
+{
+	stack_t *holder = *stack, *dum;
+
+	while (holder && holder->next)
+		holder = holder->next;
+
+	dum = *stack;
+	*stack = dum->next;
+	dum->next = NULL;
+	dum->prev = holder;
+	holder->next = dum;
+}
