@@ -72,7 +72,7 @@ void filter(stack_t **stack, unsigned int l)
 		}
 	}
 
-	fprintf(stderr, "L%d: unknown instruction %s\n", l, cmd);
+	fprintf(stderr, "L%d: unknown instruction %s", l, cmd);
 	free_all(*stack, NULL);
 	exit(EXIT_FAILURE);
 }
