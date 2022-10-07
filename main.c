@@ -55,7 +55,7 @@ void filter(stack_t **stack, unsigned int l)
 {
 	instruction_t ins[] = { {"push", push}, {"pall", print}, {"pint", pint},
 				{"pop", pop}, {"add", add}, {"swap", swap}, {"nop", nop},
-				{"sub", sub}, {"div", _div}, {"mul", _mul} };
+				{"sub", sub}, {"div", _div}, {"mul", _mul}, {"mod", _mod} };
 	char *cmd = strtok(line, " ");
 	int i;
 
